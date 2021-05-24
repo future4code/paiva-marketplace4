@@ -1,10 +1,15 @@
 import React from 'react'
-import { AppContainer } from './components/AppContainer'
+import GlobalStyle from './global'
 
-function App() {
-	return (
-        <AppContainer />
-	)
+export default class App extends React.Component {
+	render() {
+		return (
+			<>
+				<GlobalStyle />
+				<div>
+					<p>Prontos(as) para começar!</p>
+				</div>
+			</>
+		)
+	}
 }
-
-export default App
