@@ -1,15 +1,32 @@
-import React from 'react'
-import GlobalStyle from './global'
+import React from 'react';
+import { ThemeProvider, createMuiTheme, makeStyles } from 
+'@material-ui/core';
+import Header from './Header';
 
-export default class App extends React.Component {
-	render() {
-		return (
-			<>
-				<GlobalStyle />
-				<div>
-					<p>Prontos(as) para começar!</p>
-				</div>
-			</>
-		)
+const useStyles= makeStyles({
+	root: {
+		
 	}
+});
+
+function App() {
+	const theme = createMuiTheme({
+		spacing: 4,
+		palette: {
+			primary: {
+				main: '#E5E3EF',
+			},
+			secondary: {
+				main:'#8265C9',
+			},
+		},
+	});
+
+	return (
+		<ThemeProvider theme={theme}>
+			<Header/>
+		</ThemeProvider>
+	);
 }
+
+export default App;
