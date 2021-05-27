@@ -1,12 +1,14 @@
 import React from 'react'
-import { makeStyles, AppBar, Toolbar, IconButton, Typography, Button } from 
-'@material-ui/core';
+import { makeStyles, AppBar, Toolbar, IconButton, Button } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import MenuIcon from '@material-ui/icons/Menu';
 
-const useStyles= makeStyles((theme) => ({
-	root: {
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
         height: '100vh',
-	},
+    },
     appBar: {
         boxShadow: 'none',
     },
@@ -19,6 +21,9 @@ const useStyles= makeStyles((theme) => ({
     },
     button: {
         paddingRight: theme.spacing(5),
+    },
+    menu: {
+        width: '10px',
     }
 }));
 
@@ -29,12 +34,17 @@ function Header() {
         <div className={classes.root}>
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
-                    <IconButton edge="start" className={classes.logo} color="secondary" aria-label="menu">
-                    <img className={classes.logo} src="/imagens/labelogo.png" alt="logo"/>
+                    <IconButton edge="start" className={classes.logo} color="secondary" aria-label="logo">
+                        <img className={classes.logo} src="/imagens/labelogo.png" alt="logo" />
                     </IconButton>
-                    <div className={classes.grow}/>
+                    <Button className={classes.menu}
+                    startIcon={<MenuIcon />}
+                    color="secondary">
+                    </Button>
+                    <div className={classes.grow} />
+                    
                     <Button className={classes.button} color="secondary">Cadastrar Serviço</Button>
-                    <Button className={classes.button} startIcon={<AccountCircle/>} color="secondary">Login</Button>
+                    <Button className={classes.button} startIcon={<AccountCircle />} color="secondary">Login</Button>
                 </Toolbar>
             </AppBar>
         </div>
@@ -42,3 +52,4 @@ function Header() {
 }
 
 export default Header;
+
