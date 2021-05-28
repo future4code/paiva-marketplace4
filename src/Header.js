@@ -1,8 +1,6 @@
 import React from 'react'
 import { makeStyles, AppBar, Toolbar, IconButton, Button } from '@material-ui/core';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MenuIcon from '@material-ui/icons/Menu';
-
 
 
 const useStyles = makeStyles((theme) => ({
@@ -21,30 +19,23 @@ const useStyles = makeStyles((theme) => ({
     },
     button: {
         paddingRight: theme.spacing(5),
-    },
-    menu: {
-        width: '10px',
     }
 }));
 
-function Header() {
+function Header(props) {
+
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
-                    <IconButton edge="start" className={classes.logo} color="secondary" aria-label="logo">
+                    <IconButton edge="start" className={classes.logo} color="secondary" aria-label="menu">
                         <img className={classes.logo} src="/imagens/labelogo.png" alt="logo" />
                     </IconButton>
-                    <Button className={classes.menu}
-                    startIcon={<MenuIcon />}
-                    color="secondary">
-                    </Button>
                     <div className={classes.grow} />
-                    
-                    <Button className={classes.button} color="secondary">Cadastrar Serviço</Button>
-                    <Button className={classes.button} startIcon={<AccountCircle />} color="secondary">Login</Button>
+                    <Button className={classes.button} color="secondary" onClick={() => props.changePage("sellPage")} >Cadastrar Serviço</Button>
+                    <Button className={classes.button} startIcon={<AccountCircle />} color="secondary" onClick={() => props.changePage("initialPage")}>Login</Button>
                 </Toolbar>
             </AppBar>
         </div>
@@ -52,4 +43,3 @@ function Header() {
 }
 
 export default Header;
-
