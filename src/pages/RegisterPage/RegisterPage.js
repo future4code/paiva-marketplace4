@@ -1,29 +1,11 @@
-import React from 'react';
-import axios from "axios";
-import styled from 'styled-components';
+import React from 'react'
+import axios from "axios"
+import { ServiceRegisterContainer } from "./styles"
+import { ServiceRegisterForm } from "./styles"
 
 
-const ServiceRegisterContainer = styled.div`
-    width:30vw;
-    height:40vh;
-    display: flex;
-    flex-direction: column;
-    align-items: start;   
-    margin-left: 50px;
-    margin-top: -650px;
-    text-align: center;        
-`
 
-const ServiceRegisterForm = styled.form`       
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    text-align: center;  
-    margin: auto;
-    padding: 0;   
-    height:22vh;
-    justify-content:space-around
-   `
+
 
 export default class RegisterPage extends React.Component {
 
@@ -91,6 +73,7 @@ export default class RegisterPage extends React.Component {
             <ServiceRegisterContainer>
                 <h4><em>Conquiste clientes pelo celular e aumente sua renda</em></h4>
                 <h2> <em>Cadastre-se já e veja todos os serviços que estão disponíveis para você!</em></h2>
+            
 
                 <ServiceRegisterForm onSubmit={this.cadastrarServico}>
                     <select id="opcoes" name="listaopcoes" form="opcoesformulario">
