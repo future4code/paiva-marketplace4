@@ -32,7 +32,7 @@ export default class SellPage extends React.Component {
         const services = this.state.services.map(service => {
             return <ServicesCards
                 key={service.id}
-                onChange={this.props.changePage}
+                changePage={this.props.changePage}
                 title={service.title}
                 price={service.price}
                 description={service.description}

@@ -1,11 +1,11 @@
-// import React from "react"
+import React from "react"
 
-// export default class CartPage extends React.Component {
+export default class CartPage extends React.Component {
 
-//     render(){
+    render(){
 
-//         return(
-//             <div>Carrinho</div>
-//         )
-//     }
-// }
+        return(
+            <div>Carrinho</div>
+        )
+    }
+}

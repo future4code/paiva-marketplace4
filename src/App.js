@@ -1,60 +1,67 @@
-import React from 'react';
-import { createMuiTheme, makeStyles } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/styles';
-import { withStyles } from '@material-ui/core/styles';
-import Header from './Header';
-import RegisterPage from './pages/RegisterPage/RegisterPage';
-import SellPage from './pages/SellPage/SellPage';
-import InitialPage from './pages/InitialPage/InitialPage';
-
+import React from 'react'
+import { ThemeProvider } from '@material-ui/styles'
+import Header from './Header'
+import RegisterPage from './pages/RegisterPage/RegisterPage'
+import SellPage from './pages/SellPage/SellPage'
+// import { theme } from "./theme"
+import CartPage from "./pages/CartPage/CartPage"
+import HomePage from "./pages/HomePage/HomePage"
+import { createMuiTheme, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles({
-	root: {
-
-	}
+    root: {
+    }
 });
+
 
 const theme = createMuiTheme({
-	spacing: 4,
-	palette: {
-		primary: {
-			main: '#E5E3EF',
-		},
-		secondary: {
-			main: '#8265C9',
-		},
-	},
+    spacing: 4,
+    palette: {
+        primary: {
+            main: '#E5E3EF',
+        },
+        secondary: {
+            main: '#8265C9',
+        },
+    },
 });
 
-class App extends React.Component {
+
+
+
+
+export default class App extends React.Component {
 
 	state = {
-		currentPage: "registerPage"
+		currentPage: "cartPage"
 	};
 
-	changePage = (currentPage) => {
-		this.setState({ currentPage: currentPage })
+	changePage = (namePage) => {
+		this.setState({ currentPage: namePage })
 	}
 
-	render() {
-		const choosePage = () => {
-			switch (this.state.currentPage) {
-				case "registerPage":
-					return <RegisterPage />
-				case "initialPage": //aqui ficará o valor do state para a página Login
-					return <SellPage /> //aqui ficará a página Login
-				default:
-					return <SellPage /> //aqui deve ficar a Home
-			}
+	choosePage = () => {
+		switch (this.state.currentPage) {
+			case "homePage":
+				return <HomePage />
+			case "cartPage":
+				return <CartPage />
+			case "registerPage":
+				return <RegisterPage />
+			case "sellPage":
+				return <SellPage />
+			default:
+				return <HomePage />
 		}
+	}
+	render() {
 		return (
 			<ThemeProvider theme={theme}>
 				<Header changePage={this.changePage} />
-				{choosePage()}
-				<SellPage />
+				
+				{this.choosePage()}
 			</ThemeProvider>
 		);
 	}
 }
 
-export default App;
