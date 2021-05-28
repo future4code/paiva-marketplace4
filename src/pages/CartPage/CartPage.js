@@ -3,7 +3,7 @@
 // export default class CartPage extends React.Component {
 
 //     render(){
-        
+
 //         return(
 //             <div>Carrinho</div>
 //         )
