@@ -5,11 +5,10 @@ import Header from './Header'
 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App>
-      <Header />
-    </App>
-  </React.StrictMode>,
+
+  <App />,
+
+
   document.getElementById('root')
-)
+);
 

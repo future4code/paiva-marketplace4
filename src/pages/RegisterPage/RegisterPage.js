@@ -1,117 +1,120 @@
 import React from 'react'
-import axios from "axios"
-import { ServiceRegisterContainer } from "./styles"
-import { ServiceRegisterForm } from "./styles"
-
-
-
+import axios from 'axios'
+import { ServiceRegisterContainer } from './styles'
+import { ServiceRegisterForm } from './styles'
+import Footer from '../Footer/Footer'
+import ServicesCard from '../ServicesCards/ServicesCards'
+import { axiosConfig, baseUrl } from '../constants/constants'
 
 
 export default class RegisterPage extends React.Component {
 
     state = {
-        tituloServico: "",
-        descricaoServico: "",
-        valorServico: "",
-        metodoPagamento: "",
-        dataVencimento: ""
+        title: "",
+        description: "",
+        price: "",
+        paymentMethods: JSON.stringify(['', '']),
+        dueDate: "",
     }
 
-    alteraTituloServico = (event) => {
-        this.setState({ tituloServico: event.target.value })
+    changeTitle = (e) => {
+        this.setState({ title: e.target.value })
     }
 
-    descricaoServico = (event) => {
-        this.setState({ descricaoServico: event.target.value })
+    changeDescription = (e) => {
+        this.setState({ description: e.target.value })
     }
 
-    valorServico = (event) => {
-        this.setState({ valorServico: event.target.value })
+    changePrice = (e) => {
+        this.setState({ price: e.target.value })
     }
 
-    metodoPagamento = (event) => {
-        this.setState({ metodoPagamento: event.target.value })
+    changePaymentMethods = (e) => {
+        this.setState({ paymentMethods: e.target.value })
     }
-    dataVencimento = (event) => {
-        this.setState({ dataVencimento: event.target.value })
+
+    changeDueDate = (e) => {
+        this.setState({ dueDate: e.target.value })
     }
 
     registerService = (event) => {
-        event.preventDefault();
+        event.preventDefault()
         const body = {
-            title: this.state.tituloServico,
-            description: this.state.descricaoServico,
-            price: this.state.valorServico,
-            paymentMethods: this.state.metodoPagamento,
-            dueDate: this.state.dataVencimento
-        };
+            title: this.state.title,
+            description: this.state.description,
+            price: this.state.price,
+            paymentMethods: this.state.paymentMethods,
+            dueDate: this.state.dueDate
+        }
 
-        axios.post("https://labeninjas.herokuapp.com/jobs",
-            body, {
-            header: {
-                Authorization: "291b2d5d-77e2-402f-8bbb-635e73274daf"
-            }
-        })
+        axios.post(baseUrl, body, axiosConfig)
             .then(() => {
-                alert('Cadastrado com sucesso')
-            }).catch((err) => [
-                alert('Ocorreu um erro! Tente novamente'),
-                console.log(err)
-            ]);
+                alert('Oferta de serviço cadastrada com sucesso')
+            }).catch(err => {
+                alert(err.response.data)
+                console.log(err.response.data)
+            })
+
         this.setState({
-            tituloServico: "",
-            descricaoServico: "",
-            valorServico: "",
-            metodoPagamento: "",
-            dataVencimento: ""
-        });
-    };
+            title: "",
+            description: "",
+            price: "",
+            paymentMethods: [],
+            dueDate: ""
+        })
+    }
 
     render() {
-        /*const {classes} = useStyles();*/
+
         return (
             <ServiceRegisterContainer>
                 <h4><em>Conquiste clientes pelo celular e aumente sua renda</em></h4>
                 <h2> <em>Cadastre-se já e veja todos os serviços que estão disponíveis para você!</em></h2>
-            
 
-                <ServiceRegisterForm onSubmit={this.cadastrarServico}>
-                    <select id="opcoes" name="listaopcoes" form="opcoesformulario">
-                        <option value="" disabled selected>Escolha sua categoria</option>
-                        <option value="opcao1">Categoria 1</option>
-                        <option value="opcao2">Categoria 2</option>
-                        <option value="opcao3">Categoria 3</option>
-                        <option value="opcao4">Categoria 4</option>
-                        <option value="opcao5">Categoria 5</option>
-                        <option value="opcao6">Categoria 6</option>
-                        <option value="opcao7">Categoria 7</option>
-                        <option value="opcao8">Categoria 8</option>
-                        <option value="opcao9">Categoria 9</option>
-                        <option value="opcao10">Categoria 10</option>
-                    </select>
-
-                    <label>Descreva seu serviço brevemente:</label>
-                    <textarea
-                        placeholder="Comece por aqui"
-                        type="text"
-                        value={this.state.descricaoServico}
-                    />
-
-                    <label>Valor do seu serviço:</label>
+                <ServiceRegisterForm>
+                    <label>Qual serviço você deseja ofertar?</label>
                     <input
-                        placeholder="R$ 0,00"
-                        type="number"
-                        value={this.state.valorServico}
+                        placeholder="Ex.: Aula"
+                        type="text"
+                        value={this.state.title}
+                        onChange={this.changeTitle}
                     />
 
-                    <select id="options" name="payments" form="paymentsoptions">
-                        <option value="" disabled selected>Escolha seu método de pagamento</option>
-                        <option value="paypal">Paypal</option>
-                        <option value="credito">Cartão de crédito</option>
+                    <label>Descreva o serviço brevemente:</label>
+                    <textarea
+                        placeholder="Ex.: Aulas de piano"
+                        type="text"
+                        value={this.state.description}
+                        onChange={this.changeDescription}
+                    />
+
+                    <label>Valor do serviço:</label>
+                    <input
+                        placeholder="Ex.: 400"
+                        value={this.state.price}
+                        onChange={this.changePrice}
+                    />
+
+                    <label>Método de pagamento:</label>
+                    <select
+                        placeholder="Forma de pagamento"
+                        value={this.state.paymentMethods}
+                        onChange={this.changePaymentMethods}>
+                        <option value="PayPal">Paypal</option>
+                        <option value="boleto">Boleto</option>
                     </select>
+
+                    <label>Data de vencimento da publicação:</label>
+                    <input
+                        placeholder="AAAA-MM-DD"
+                        value={this.state.dueDate}
+                        onChange={this.changeDueDate}
+                    />
+
                     <button type="submit" onClick={this.registerService}>Cadastrar serviço</button>
                 </ServiceRegisterForm>
             </ServiceRegisterContainer>
-        );
-    };
+        )
+    }
 };
+

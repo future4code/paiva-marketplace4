@@ -1,48 +1,55 @@
-import React from 'react'
-import styled from 'styled-components';
+import React from 'react';
+import axios from 'axios';
 import ServicesCards from '../ServicesCards/ServicesCards';
+import { axiosConfig, baseUrl } from '../constants/constants';
+import Filter from '../Filter/Filter';
+import { Grid } from "@material-ui/core";
 
 
-const SellPageContainer = styled.div`
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-`
 
 export default class SellPage extends React.Component {
 
     state = {
-        services: [
-            {
-                "id": "efed9385-cf87-4f0e-a121-465384b3f2e4",
-                "title": "Cortar a grama",
-                "description": "Manutenção em áreas verdes de até 1000 metros quadrados.",
-                "price": 40,
-                "paymentMethods": [
-                    "PayPal",
-                    "boleto"
-                ],
-                "dueDate": "2021-12-30T00:00:00.000Z",
-                "taken": false
-            }
-        ]
+        jobs: []
     };
 
+    componentDidMount = () => {
+        this.getServices()
+    }
+
+    getServices = () => {
+        axios.get(baseUrl, axiosConfig)
+            .then(response => {
+                this.setState({ jobs: response.data.jobs })
+            }).catch(err => {
+                console.log(err)
+            })
+    }
+
     render() {
-        const services = this.state.services.map(service => {
-            return <ServicesCards
-                key={service.id}
-                changePage={this.props.changePage}
-                title={service.title}
-                price={service.price}
-                description={service.description}
-            />
+
+        const services = this.state.jobs.map(service => {
+            return (
+                <Grid container spacing={1} justify='center' direction="row"
+                    alignItems="center" marginTop={60} height={200} gridTemplateColumns="repeat(4, 24.8% 0.2%)">
+                    <Grid item key={service.id} xs={12} sm={6} md={4} lg={3}>
+                        <ServicesCards changePage={this.props.changePage}
+                            serviceId={service.id}
+                            title={service.title}
+                            price={service.price}
+                            description={service.description} />
+                    </Grid>
+                </Grid>
+            )
         })
 
         return (
-            <SellPageContainer >
+            <div>
+                <Filter count={this.state.jobs.length} />
                 {services}
-            </SellPageContainer >
+            </div>
         )
     };
 };
+
+

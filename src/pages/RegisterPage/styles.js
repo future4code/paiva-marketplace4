@@ -2,14 +2,14 @@ import styled from 'styled-components'
 
 
 export const ServiceRegisterContainer = styled.div`
-    width:30vw;
+    width:40vw;
     height:40vh;
     display: flex;
     flex-direction: column;
     align-items: start;   
     margin-left: 50px;
     margin-top: -650px;
-    text-align: center;        
+    text-align: center;       
 `
 
 export const ServiceRegisterForm = styled.form`       
@@ -19,7 +19,6 @@ export const ServiceRegisterForm = styled.form`
     text-align: center;  
     margin: auto;
     padding: 0;   
-    height:22vh;
+    height:30vh;
     justify-content:space-around;
    `
-   
