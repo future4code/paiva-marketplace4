@@ -1,43 +1,37 @@
-import React from "react"
-import styled from "styled-components";
+import React from 'react';
+import { Grid, Card, CardMedia, CardContent, CardActions, Typography, Button } from '@material-ui/core';
+import useStyles from './styles';
+import Filter from '../Filter/Filter';
 
 
-const ServiceCardContainer = styled.div`
-   display: flex;
-   flex-direction: row;
-`
-const ServiceCardInternalContainer = styled.div`
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   margin: 10px;
-   border: 1px solid purple;
-   width: 260px;
-   height:230px;
-   padding: 10px;
-   text-align: center;
-`
 export default function ServicesCards(props) {
+
+    const classes = useStyles();
+
     return (
-        <ServiceCardContainer>
-            <ServiceCardInternalContainer >
-                <h3>{props.title}</h3>
-                <h3>R${props.price},00</h3>
-                <p>{props.description}</p>
-                <button onClick={() => props.changePage("sellPage")}>Contratar</button>
-            </ServiceCardInternalContainer >
-            <ServiceCardInternalContainer >
-                <h3>{props.title}</h3>
-                <h3>R${props.price},00</h3>
-                <p>{props.description}</p>
-                <button onClick={() => props.changePage("sellPage")}>Contratar</button>
-            </ServiceCardInternalContainer >
-            <ServiceCardInternalContainer >
-                <h3>{props.title}</h3>
-                <h3>R${props.price},00</h3>
-                <p>{props.description}</p>
-                <button onClick={() => props.changePage("sellPage")}>Contratar</button>
-            </ServiceCardInternalContainer >
-        </ServiceCardContainer>
-    )
+
+        <Card className={classes.root}>
+            <CardMedia className={classes.media} title={props.name}>
+                <img className={classes.imagem} src="https://pmr.site.contabilit.com.br/wp-content/uploads/sites/198/2017/08/servicos.jpg" alt="imagem" />
+            </CardMedia>
+            <CardContent>
+                <div className={classes.cardContent}>
+                    <Typography variant='h6' gutterBottom color='secondary' justify='center' className={classes.text}>
+                        {props.title}
+                    </Typography>
+                    <Typography variant='h7' color='secondary' justify='center' className={classes.text}>
+                        R${props.price},00
+                    </Typography>
+                    <Typography variant='body5' color='textSecondary' justify='center' fonteSize='30' className={classes.text}>
+                        {props.description}
+                    </Typography>
+                </div>
+            </CardContent>
+            <CardActions disableSpacing className={classes.cardAction} >
+                <Button aria-label="Contratar" color='secondary' className={classes.button}>CONTRATAR</Button>
+            </CardActions>
+        </Card>
+
+    );
 }
+

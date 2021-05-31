@@ -1,12 +1,12 @@
 import React from 'react'
-import { makeStyles, AppBar, Toolbar, IconButton, Button } from '@material-ui/core';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import { theme } from "./theme"
+import { makeStyles, AppBar, Toolbar, IconButton, Button } from '@material-ui/core'
+import AccountCircle from '@material-ui/icons/AccountCircle'
+import { theme } from './theme'
 
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        height: '100vh',
+        maxWidth: '30%'
     },
     appBar: {
         boxShadow: 'none',

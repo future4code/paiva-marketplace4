@@ -2,9 +2,9 @@ import React from "react"
 
 export default class CartPage extends React.Component {
 
-    render(){
+    render() {
 
-        return(
+        return (
             <div>Carrinho</div>
         )
     }
