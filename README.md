@@ -1,6 +1,7 @@
 Projeto Marketplace LabeNinjas
 
-Funcionalidades:
+
+FUNCIONALIDADES:
 
 • Cadastro de serviços
 
@@ -14,17 +15,21 @@ Funcionalidades:
 
 • Contratação dos serviços
 
+
 Todas as funcionalidades citadas funcionam
 
-Tecnologia utilizada:
+
+TECNOLOGIA UTILIZADA:
 
 • React.JS
 
-Surge:
+
+SURGE:
 
 http://zippy-scarf.surge.sh/
 
-Grupo:
+
+GRUPO:
 
 • Túlio Dias
 
