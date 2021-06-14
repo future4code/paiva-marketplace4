@@ -5,3 +5,5 @@ export const axiosConfig = {
         Authorization: "291b2d5d-77e2-402f-8bbb-635e73274daf"
     }
 };
+
+export const key = "291b2d5d-77e2-402f-8bbb-635e73274daf";

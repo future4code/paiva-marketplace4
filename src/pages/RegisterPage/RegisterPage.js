@@ -1,10 +1,12 @@
-import React from 'react'
-import axios from 'axios'
-import { ServiceRegisterContainer } from './styles'
-import { ServiceRegisterForm } from './styles'
-import Footer from '../Footer/Footer'
-import ServicesCard from '../ServicesCards/ServicesCards'
-import { axiosConfig, baseUrl } from '../constants/constants'
+import React from 'react';
+import axios from 'axios';
+import { Button } from '@material-ui/core';
+import { axiosConfig, baseUrl } from '../../constants/constants';
+import {
+    ServiceRegisterForm, ServiceRegisterArea, TextoArea, ContainerImagens,
+    InternalForm, LabelName, InputFormName, InputFormPrice, InputFormPayment, ImagemService,
+    InputFormDue, ContainerServiceRegister, ContainerPrimeiraImagem, ImagemServicePage, ContainerSegundaImagem
+} from './styles';
 
 
 export default class RegisterPage extends React.Component {
@@ -13,26 +15,21 @@ export default class RegisterPage extends React.Component {
         title: "",
         description: "",
         price: "",
-        paymentMethods: JSON.stringify(['', '']),
+        paymentMethods: "",
         dueDate: "",
     }
-
     changeTitle = (e) => {
         this.setState({ title: e.target.value })
     }
-
     changeDescription = (e) => {
         this.setState({ description: e.target.value })
     }
-
     changePrice = (e) => {
         this.setState({ price: e.target.value })
     }
-
     changePaymentMethods = (e) => {
         this.setState({ paymentMethods: e.target.value })
     }
-
     changeDueDate = (e) => {
         this.setState({ dueDate: e.target.value })
     }
@@ -40,13 +37,12 @@ export default class RegisterPage extends React.Component {
     registerService = (event) => {
         event.preventDefault()
         const body = {
-            title: this.state.title,
-            description: this.state.description,
-            price: this.state.price,
-            paymentMethods: this.state.paymentMethods,
-            dueDate: this.state.dueDate
+            "title": this.state.title,
+            "description": this.state.description,
+            "price": Number(this.state.price),
+            "paymentMethods": [this.state.paymentMethods],
+            "dueDate": this.state.dueDate,
         }
-
         axios.post(baseUrl, body, axiosConfig)
             .then(() => {
                 alert('Oferta de serviço cadastrada com sucesso')
@@ -54,67 +50,59 @@ export default class RegisterPage extends React.Component {
                 alert(err.response.data)
                 console.log(err.response.data)
             })
-
         this.setState({
             title: "",
             description: "",
             price: "",
-            paymentMethods: [],
-            dueDate: ""
+            paymentMethods: "",
+            dueDate: "",
         })
     }
 
     render() {
-
         return (
-            <ServiceRegisterContainer>
-                <h4><em>Conquiste clientes pelo celular e aumente sua renda</em></h4>
-                <h2> <em>Cadastre-se já e veja todos os serviços que estão disponíveis para você!</em></h2>
+            <ContainerServiceRegister>
+                <ServiceRegisterArea>
+                    <TextoArea>
+                        <p><em>Conquiste clientes e aumente sua renda</em></p><br />
+                        <h4><em>Cadastre-se já e veja todos os serviços que estão disponíveis para você!</em></h4><br />
+                    </TextoArea>
+                    <ServiceRegisterForm>
+                        <InternalForm>
+                            <legend>Qual serviço você deseja ofertar?</legend>
+                            <LabelName>Serviço:</LabelName>
+                            <InputFormName type="text" value={this.state.title} onChange={this.changeTitle} /><br />
 
-                <ServiceRegisterForm>
-                    <label>Qual serviço você deseja ofertar?</label>
-                    <input
-                        placeholder="Ex.: Aula"
-                        type="text"
-                        value={this.state.title}
-                        onChange={this.changeTitle}
-                    />
+                            <LabelName>Descrição:</LabelName><br />
+                            <textarea cols="35" rows="4" type="text" value={this.state.description} onChange={this.changeDescription}></textarea><br />
 
-                    <label>Descreva o serviço brevemente:</label>
-                    <textarea
-                        placeholder="Ex.: Aulas de piano"
-                        type="text"
-                        value={this.state.description}
-                        onChange={this.changeDescription}
-                    />
+                            <LabelName>Preço:</LabelName>
+                            <InputFormPrice type="text" value={this.state.price} onChange={this.changePrice} /><br /><br />
 
-                    <label>Valor do serviço:</label>
-                    <input
-                        placeholder="Ex.: 400"
-                        value={this.state.price}
-                        onChange={this.changePrice}
-                    />
+                            <LabelName>Pagamento:</LabelName>
+                            <InputFormPayment placeholder='Boleto ou PayPal' value={this.state.paymentMethods}
+                                onChange={this.changePaymentMethods} /><br /><br />
 
-                    <label>Método de pagamento:</label>
-                    <select
-                        placeholder="Forma de pagamento"
-                        value={this.state.paymentMethods}
-                        onChange={this.changePaymentMethods}>
-                        <option value="PayPal">Paypal</option>
-                        <option value="boleto">Boleto</option>
-                    </select>
+                            <LabelName>Vencimento:</LabelName>
+                            <InputFormDue placeholder="AAAA-MM-DD"
+                                value={this.state.dueDate}
+                                onChange={this.changeDueDate}
+                            /><br /><br />
+                            <Button color="secondary" variant="contained" size="small" type="submit" onClick={this.registerService}>Cadastrar</Button>
+                        </InternalForm>
+                    </ServiceRegisterForm>
+                </ServiceRegisterArea>
+                <ContainerImagens>
+                    <ContainerPrimeiraImagem className='imagem-engenheira'>
+                        <ImagemServicePage src='./images/gerente.png' alt='mulher de terno' />
 
-                    <label>Data de vencimento da publicação:</label>
-                    <input
-                        placeholder="AAAA-MM-DD"
-                        value={this.state.dueDate}
-                        onChange={this.changeDueDate}
-                    />
-
-                    <button type="submit" onClick={this.registerService}>Cadastrar serviço</button>
-                </ServiceRegisterForm>
-            </ServiceRegisterContainer>
+                    </ContainerPrimeiraImagem>
+                    <ContainerSegundaImagem className='imagem-gerente'>
+                        <ImagemService src='./images/engenheiracivil.png' alt='engenheira civil' />
+                    </ContainerSegundaImagem>
+                </ContainerImagens>
+            </ContainerServiceRegister >
         )
     }
-};
 
+};
