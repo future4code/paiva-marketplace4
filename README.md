@@ -7,6 +7,7 @@
 
 <h2>Funcionalidades:</h2>
 </br>
+
 - cadastro de serviços;
 
 - renderização dos objetos;
@@ -22,6 +23,7 @@
 
 <h2>Tecnologias utilizadas:</h2>
 </br>
+
 - React.JS;
 
 - axios;
@@ -38,6 +40,7 @@ http://selfish-brush.surge.sh
 
 <h2>Grupo:</h2>
 </br>
+
 - Túlio Dias
 
 - Sarah Migliorini Rocha
