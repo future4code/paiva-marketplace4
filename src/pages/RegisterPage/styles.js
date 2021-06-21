@@ -4,10 +4,11 @@ import styled from 'styled-components'
 export const ContainerServiceRegister = styled.div`
     display: flex;    
     width: 100vw;
-    height:80vh;
+    height:100vh;
+    margin-top:3rem;
     @media(max-width: 800px) {
-        flex-direction: column;
-        position: relative;        
+        display:flex;
+        flex-direction: column;            
         img{
           display: none;
         }
@@ -17,7 +18,7 @@ export const ContainerServiceRegister = styled.div`
 export const ServiceRegisterArea = styled.div`   
     width:70vw;
     height:70vh;       
-    margin-left: 5rem;
+    margin-left: 7rem;
     margin-top: 8rem;
     text-align: center;
     h3{
@@ -29,11 +30,13 @@ export const TextoArea = styled.div`
    width:36vw;
    color: #505050;
    padding:12px;
+   margin-left:10%;
 `
 
 export const ServiceRegisterForm = styled.form`
    position: absolute;
-   display: block;
+   width: 30px;
+   margin-left:10%;
 `
 
 export const InternalForm = styled.fieldset`
@@ -82,25 +85,20 @@ export const ContainerImagens = styled.div`
    top: 5%;      
 `
 
-export const ContainerPrimeiraImagem = styled.div`
+export const ContainerImagem = styled.div`
   padding: 0;
   margin:0;
 `
 
-export const ImagemServicePage = styled.img`
-  margin-top:65%; 
-  padding-right: 2%; 
-  width: 70%;
-`
-
-export const ContainerSegundaImagem = styled.div`
-   padding:0;
-   margin:0;
-`
 export const ImagemService = styled.img`
   position: absolute;
-  right: 0;
-  top: 50%;
+  left: 8%;
+  top: 22%;
   width: 60%; 
   z-index: -1;
 `
+/*export const ImagemServicePage = styled.img`
+  margin-top:65%;
+  padding-right: 2%;
+  width: 70%;
+  `*/

@@ -8,6 +8,7 @@ justify-content: space-between;
 margin-top:7rem;
 margin-left:4rem;
 margin-right:6rem; 
+width:80vw;
 label{
   color:#505050;
   font-size: 13px;

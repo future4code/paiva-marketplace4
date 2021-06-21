@@ -5,18 +5,13 @@ import { HomeContainer } from './styles';
 
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-        justifyContent: 'space-around',
-        width: '90vw',
-        height: '50vh',
-        marginTop: '7rem',
-        marginLeft: '3rem',
-    },
     content: {
+        display: 'flex',
+        textAlign: 'center',
         flexGrow: 1,
         padding: 10,
         marginTop: '1rem',
+        width: '600px',
     },
     title: {
         flexGrow: 1,
@@ -33,10 +28,8 @@ const useStyles = makeStyles((theme) => ({
     buttonservicos: {
         display: "flex",
         marginTop: '2rem',
-        marginLeft: '4rem',
-        justifyContent: 'center',
-        alignItems: "center",
-        width: '60%',
+        margin: 'auto',
+        width: '30%',
         border: ".5px solid",
     },
     engrenagem: {

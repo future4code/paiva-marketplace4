@@ -8,7 +8,7 @@ import HomePage from './pages/HomePage/HomePage'
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import SellPage from './pages/SellPage/SellPage';
 import CartPage from './pages/CartPage/CartPage';
-import CartItem from './components/CartItem/CartItem';
+
 
 const GlobalStyle = createGlobalStyle`
   * {
