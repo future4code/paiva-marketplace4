@@ -94,11 +94,7 @@ export const ImagemService = styled.img`
   position: absolute;
   left: 8%;
   top: 22%;
+  bottom:0.2rem;
   width: 60%; 
   z-index: -1;
 `
-/*export const ImagemServicePage = styled.img`
-  margin-top:65%;
-  padding-right: 2%;
-  width: 70%;
-  `*/

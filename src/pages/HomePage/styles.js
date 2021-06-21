@@ -8,7 +8,7 @@ export const HomeContainer = styled.div`
     height: 100vh;
     margin-top: 12rem;
     margin-left: 4rem;
-    margin-bottom:0.2rem;;
+    margin-bottom:0.2rem;
     @media(max-width: 800px) {
         display:flex;
         flex-direction: column;               
