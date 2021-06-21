@@ -5,7 +5,7 @@ import { axiosConfig, baseUrl } from '../../constants/constants';
 import {
     ServiceRegisterForm, ServiceRegisterArea, TextoArea, ContainerImagens,
     InternalForm, LabelName, InputFormName, InputFormPrice, InputFormPayment, ImagemService,
-    InputFormDue, ContainerServiceRegister, ContainerPrimeiraImagem, ImagemServicePage, ContainerSegundaImagem
+    InputFormDue, ContainerServiceRegister, ContainerImagem
 } from './styles';
 
 
@@ -93,13 +93,9 @@ export default class RegisterPage extends React.Component {
                     </ServiceRegisterForm>
                 </ServiceRegisterArea>
                 <ContainerImagens>
-                    <ContainerPrimeiraImagem className='imagem-engenheira'>
-                        <ImagemServicePage src='./images/gerente.png' alt='mulher de terno' />
-
-                    </ContainerPrimeiraImagem>
-                    <ContainerSegundaImagem className='imagem-gerente'>
+                    <ContainerImagem className='imagem-engenheira'>
                         <ImagemService src='./images/engenheiracivil.png' alt='engenheira civil' />
-                    </ContainerSegundaImagem>
+                    </ContainerImagem>
                 </ContainerImagens>
             </ContainerServiceRegister >
         )

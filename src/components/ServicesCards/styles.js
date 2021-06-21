@@ -4,13 +4,14 @@ import styled from 'styled-components';
 export const CardBlock = styled.ul`
   display: inline-flex; 
   justify-items: center; 
-  height: 50vh; 
-  width: 27vw;
+  height: 42vh; 
+  width: 30vw;
   margin: 0.1rem;
   padding:0;  
-  margin-top:0.9rem;
+  margin-top: 1rem;
   margin-bottom:-10.5rem; 
   @media(max-width: 800px) {
+    display:flex;
     flex-direction: column;
     position: relative;
   }
@@ -19,7 +20,7 @@ export const CardContainer = styled.li`
   list-style-type: none;
   padding: 0;   
   height:10rem;   
-  margin-left:5.5rem;
+  margin-left:5.5rem;  
 `
 export const CardServices = styled.div`
   display: flex;
@@ -37,5 +38,5 @@ export const CardServices = styled.div`
 `
 
 export const IconContainer = styled.div`
-   margin-left: 50rem;
+   margin-left: 68rem;
 `

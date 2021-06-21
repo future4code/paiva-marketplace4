@@ -19,7 +19,7 @@ export default class ServicesCards extends React.Component {
                 this.props.getAllJobs();
             })
             .catch((err) => {
-                alert('Erro.Tente novamente!')
+                alert('Clique no ícone para finalizar a contratação!')
             })
     }
 
@@ -28,7 +28,7 @@ export default class ServicesCards extends React.Component {
             jobs={this.props.state && this.props.state.jobs}
             jobsInCart={this.props.state && this.props.state.jobsInCart}
         />
-        const services = this.props.jobs && this.props.jobs.map(job => {
+        const services = this.props.jobs ? this.props.jobs.map(job => {
             return (
                 <CardBlock>
                     <CardContainer>
@@ -40,7 +40,7 @@ export default class ServicesCards extends React.Component {
                     </CardContainer>
                 </CardBlock>
             );
-        })
+        }) : <div>Carregando...</div>
 
         return (
             <div>
